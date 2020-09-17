@@ -60,6 +60,9 @@ export default {
   postAnArticle(data){
     return instance.post('/articles', data); 
   },
+  removeAnArticle(articleId){
+    return instance.delete('/articles/'+articleId); 
+  },
   //用户注册
   userRegister(data) {
     return instance.post('/users', data);  // http://localhost:3000/users

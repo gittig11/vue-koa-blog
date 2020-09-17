@@ -3,6 +3,7 @@
     <el-row>
       <el-button type="primary" round @click="handleClick">同步文章</el-button>
       <el-button type="primary" round @click="doPersistence">文章持久化</el-button>
+      <el-button type="primary" round @click="doNotPersistence">取消持久化</el-button>
     </el-row>
     
     <el-checkbox v-if="list.length>0" :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">
@@ -42,6 +43,42 @@
       }
     },
     methods: {
+      doNotPersistence(){
+        if(this.checkedLabels.length === 0){
+          this.$message({
+            showClose: true,
+            message: '请选择想要取消持久化的文章~',
+            type: 'warning'
+          })
+          return false;
+        }
+        console.log("doNotPersistence");
+        let checkBlogs = this.blogs.filter(blog => this.checkedLabels.includes(blog.id))
+        console.log(checkBlogs);
+        for(let i=0; i<this.checkedLabels.length; i++){
+          axios.removeAnArticle(this.checkedLabels[i])
+            .then(()=>{
+              // console.log(response);
+              this.$message({
+                showClose: true,
+                message: `文章 ${checkBlogs[i].title} 取消持久化完成~`,
+                type: 'success',
+                duration: 1500
+              })
+            })
+            .catch((err)=>{
+              // console.log(err)
+              if(err.status === 404){
+                this.$message({
+                  showClose: true,
+                  message: `文章 ${checkBlogs[i].title} 已经取消持久化~`,
+                  type: 'warning',
+                  duration: 1500
+                })
+              }
+            })
+        }  // endfor
+      },
       doPersistence(){
         // 持久化之前需要选择某些文章
         if(this.checkedLabels.length === 0){
