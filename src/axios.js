@@ -34,16 +34,18 @@ instance.interceptors.response.use(
   error => {
     if (error.response) {
       switch (error.response.status) {
-        case 401:  // auth不通过
+        case 401:
+          // 未登录时注册新用户，auth不通过
+          // alert("请先以管理员身份登录~");
           // store.dispatch('UserLogout'); //可能是token过期，清除它
-          alert("请先以管理员身份登录~");
           /*router.replace({ //跳转到登录页面
             path: 'login',
             query: { redirect: router.currentRoute.fullPath } // 将跳转的路由path作为参数，登录成功后跳转到该路由
           });*/
           break;
         case 409:
-          alert("用户名已经存在~");
+          // 注册的新用户已经存在或者文章已经持久化
+          // alert("用户名已经存在~");
           break;
       }
     }

@@ -63,9 +63,9 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          console.log("this.ruleForm")
           // delete this.ruleForm["checkPass"]
-          console.log(this.ruleForm)
+          // console.log("this.ruleForm")
+          // console.log(this.ruleForm)
           axios.userRegister(this.ruleForm)
             .then((res) => {
               if (res.status === 200) {
@@ -80,6 +80,15 @@ export default {
                   type: 'info',
                   message: '用户名已经存在'
                 });
+              }
+            })
+            .catch((err)=>{
+              // console.log(err)
+              if(err.status === 401) {
+                alert(`${err.status} ${err.data} 请先以管理员身份登录~`);
+              }
+              else if(err.status === 409) {
+                alert(`${err.status} Conflict ${err.data}`);  // 用户名已被占用
               }
             })
         }

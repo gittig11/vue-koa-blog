@@ -68,15 +68,19 @@
               this.$message({
                 showClose: true,
                 message: `文章 ${checkBlogs[i].title} 持久化完成~`,
-                type: 'success'
+                type: 'success',
+                duration: 1000
               })
             })
-            .catch(()=>{
-              this.$message({
-                showClose: true,
-                message: `文章 ${checkBlogs[i].title} 已经持久化~`,
-                type: 'warning'
-              })
+            .catch((err)=>{
+              if(err.status === 409){
+                this.$message({
+                  showClose: true,
+                  message: `文章 ${checkBlogs[i].title} 已经持久化~`,
+                  type: 'warning',
+                  duration: 1000
+                })
+              }
             })
         }  // endfor
         // console.log(this.checkedLabels)

@@ -86,7 +86,9 @@ export default {
               window.sessionStorage.setItem('token', data.token)
               this.$message({
                 type: 'info',
-                message: '登录成功！'
+                message: '登录成功！',
+                duration: 1000,
+                showClose: true,
               });
               this.$router.push({path: "/"})
                 .catch(()=>{});
