@@ -1,5 +1,5 @@
 import axios from 'axios'
-import router from './router'
+// import router from './router'
 // import store from './store'
 
 //创建axios实例
@@ -12,7 +12,7 @@ var instance = axios.create({
 //request拦截器
 instance.interceptors.request.use(
   config => {
-    // 登录后端的鉴权
+    // 登录后端 http://localhost:3000 的鉴权
     let token = window.localStorage.getItem('token');
     // console.log(token)
     if (token) {
@@ -33,12 +33,16 @@ instance.interceptors.response.use(
   error => {
     if (error.response) {
       switch (error.response.status) {
-        case 401:
+        case 401:  // auth不通过
           // store.dispatch('UserLogout'); //可能是token过期，清除它
-          router.replace({ //跳转到登录页面
+          alert("请先以管理员身份登录~");
+          /*router.replace({ //跳转到登录页面
             path: 'login',
             query: { redirect: router.currentRoute.fullPath } // 将跳转的路由path作为参数，登录成功后跳转到该路由
-          });
+          });*/
+          break;
+        case 409:
+          alert("用户名已经存在~");
           break;
       }
     }

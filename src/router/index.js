@@ -58,7 +58,7 @@ const routes = [
     component: () =>
       import("@/components/Display.vue"),
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     }
   },
 ];

@@ -26,7 +26,7 @@
         </el-form>
       </el-tab-pane>
       <el-tab-pane label="注册" name="second">
-        <!-- <register></register> -->
+        <Register></Register>
       </el-tab-pane>
     </el-tabs>
     <!-- <el-button type="primary" round @click="getUsers()">getUsers</el-button> -->
@@ -37,8 +37,8 @@
 </template>
 
 <script>
-// import register from '@/components/register'
 // import HelloWorld from '@/components/HelloWorld'
+import Register from '@/components/Register'
 import axios from '@/axios.js'
 export default {
   name: "Login",
@@ -128,7 +128,7 @@ export default {
     }
   },
   components: {
-    // register
+    Register
   }
 };
 </script>

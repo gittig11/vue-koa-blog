@@ -19,7 +19,7 @@ export default {
   mounted(){
     this.axios.get('http://localhost:3000/articles')
       .then((response)=>{
-        // console.log(response.data);
+        console.log(response.data);
         this.$message({
           showClose: true,
           message: `读取MongoDB数据库成功~`,
