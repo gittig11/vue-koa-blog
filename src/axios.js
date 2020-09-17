@@ -1,4 +1,5 @@
 import axios from 'axios'
+import configObj from '@/config.js'
 // import router from './router'
 // import store from './store'
 
@@ -6,7 +7,7 @@ import axios from 'axios'
 var instance = axios.create({
   timeout: 5000, //请求超过5秒即超时返回错误
   headers: { 'Content-Type': 'application/json;charset=UTF-8' },
-  baseURL: 'http://localhost:3000'
+  baseURL: configObj.baseURL,  // http://localhost:3000
 });
 
 //request拦截器
@@ -51,6 +52,12 @@ instance.interceptors.response.use(
 );
 
 export default {
+  getArticles(){
+    return instance.get('/articles'); 
+  },
+  postAnArticle(){
+    return instance.post('/articles'); 
+  },
   //用户注册
   userRegister(data) {
     return instance.post('/users', data);  // http://localhost:3000/users

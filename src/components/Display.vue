@@ -9,6 +9,9 @@
 </template>
 
 <script>
+import axios from '@/axios.js'
+// this.axios是原生axios，而axios是封装后的
+
 export default {
   name: 'Display',
   data () {
@@ -17,7 +20,8 @@ export default {
     }
   },
   mounted(){
-    this.axios.get('http://localhost:3000/articles')
+    axios.getArticles()
+    // this.axios.get('http://localhost:3000/articles')
       .then((response)=>{
         console.log(response.data);
         this.$message({

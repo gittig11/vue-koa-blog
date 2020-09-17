@@ -14,7 +14,7 @@ export default {
     }
   },
   mounted() {
-    this.axios.get(`api/v2/repos/mijixunzong/kb/docs/${this.id}`,{
+    this.axios.get(`${configObj.docsUrl}${this.id}`,{
       headers: {
         'X-Auth-Token': configObj.yuqueToken
       },

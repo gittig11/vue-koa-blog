@@ -23,7 +23,8 @@
 
 <script>
   import configObj from '@/config.js'
-
+  import axios from '@/axios.js'
+  
   export default {
     name: "Home",
     components: {
@@ -60,8 +61,8 @@
         // 
         // 文章存入数据库后，前端读取数据库并展示
         for(let i=0; i<checkBlogs.length; i++){
-          // console.log(checkBlogs[i])
-          this.axios.post('http://localhost:3000/articles', checkBlogs[i])
+          axios.postAnArticle(checkBlogs[i])
+          // this.axios.post('http://localhost:3000/articles', checkBlogs[i])
             .then(()=>{
               // console.log(response);
               this.$message({
@@ -70,9 +71,7 @@
                 type: 'success'
               })
             })
-            .catch((err)=>{
-              console.log("怎么处理500错误");
-              console.log(err);
+            .catch(()=>{
               this.$message({
                 showClose: true,
                 message: `文章 ${checkBlogs[i].title} 已经持久化~`,
@@ -83,7 +82,7 @@
         // console.log(this.checkedLabels)
       },
       handleCheckAllChange(val){
-      //@change="handleCheckAllChange"-->选中状态val为true，未选中为false
+        //@change="handleCheckAllChange"-->选中状态val为true，未选中为false
         // console.log(val)
         this.checkedLabels = val ? this.labels : [];
         this.isIndeterminate = false;
@@ -102,7 +101,8 @@
           type: 'success',
           duration: 1000
         })
-        this.axios.get('api/v2/repos/mijixunzong/kb/docs/',{
+        // 获取id、title等数据
+        this.axios.get(`${configObj.docsUrl}`,{
           headers: {
             'X-Auth-Token': configObj.yuqueToken
           }
@@ -118,7 +118,7 @@
             let blog = {}
             blog.id = this.list[i].id
             blog.title = this.list[i].title
-            this.axios.get(`api/v2/repos/mijixunzong/kb/docs/${blog.id}`,{
+            this.axios.get(`${configObj.docsUrl}${blog.id}`,{
               headers: {
                 'X-Auth-Token': configObj.yuqueToken
               },

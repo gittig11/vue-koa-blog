@@ -37,7 +37,6 @@
 </template>
 
 <script>
-// import HelloWorld from '@/components/HelloWorld'
 import Register from '@/components/Register'
 import axios from '@/axios.js'
 export default {
@@ -47,9 +46,6 @@ export default {
       if (value === "") {
         callback(new Error("请输入密码"));
       } else {
-        // if (this.ruleForm.checkPass !== "") {
-        //   this.$refs.ruleForm.validateField("checkPass");
-        // }
         callback();
       }
     };
@@ -58,7 +54,6 @@ export default {
       ruleForm: {
         name: "",
         password: "",
-        // checkPass: ""  //???
       },
       rules: {
         name: [
