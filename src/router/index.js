@@ -69,7 +69,9 @@ const router = new VueRouter({
 
 // 注册全局钩子用来拦截导航
 router.beforeEach((to, from, next) => {
-  let token = window.localStorage.getItem('token')
+  // let token = store.state.token;
+  
+  let token = window.sessionStorage.getItem('token')
   if (to.meta.requiresAuth) {
     if (token) {  // 有token时
       // store.dispatch('getUser')

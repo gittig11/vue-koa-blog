@@ -81,9 +81,9 @@ export default {
           axios.userLogin(this.ruleForm)
             .then( ({data}) => {
               console.log(data);
-              // 登录成功就把token存到localStorage
+              // 登录成功就把token存到 sessionStorage
               // 这是后端返回的token
-              window.localStorage.setItem('token', data.token)
+              window.sessionStorage.setItem('token', data.token)
               this.$message({
                 type: 'info',
                 message: '登录成功！'

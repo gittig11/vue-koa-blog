@@ -19,7 +19,7 @@ export default {
   },
   mounted() {
     // 退出登录时清除token，同时路由跳转到/login
-    window.localStorage.removeItem("token");
+    window.sessionStorage.removeItem("token");
     // this.$store.dispatch('changeLoginStatus', true)
     // this.$store.commit('LOGINSTATUS', true)
     this.$router.push('/login')

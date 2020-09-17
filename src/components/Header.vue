@@ -20,6 +20,7 @@ export default {
     },
     showLogin(){
       this.$message({
+        showClose: true,
         type: 'info',
         message: '退出成功，请重新登录！'
       });

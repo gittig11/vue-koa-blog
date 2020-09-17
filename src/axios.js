@@ -14,7 +14,7 @@ var instance = axios.create({
 instance.interceptors.request.use(
   config => {
     // 登录后端 http://localhost:3000 的鉴权
-    let token = window.localStorage.getItem('token');
+    let token = window.sessionStorage.getItem('token');
     // console.log(token)
     if (token) {
       config.headers.Authorization = "Bearer " + token;
