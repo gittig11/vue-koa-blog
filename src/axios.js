@@ -55,8 +55,8 @@ export default {
   getArticles(){
     return instance.get('/articles'); 
   },
-  postAnArticle(){
-    return instance.post('/articles'); 
+  postAnArticle(data){
+    return instance.post('/articles', data); 
   },
   //用户注册
   userRegister(data) {

@@ -1,5 +1,7 @@
 export default {
-  yuqueToken: 'hjMoWr2XzenwsX5JyX6ETsBMMq9UVL6MPDu4FaKX',
+  yuqueToken: 'qQMNC7DWhyRsHrYmxVmKf1KgFEe0RcOM9YpgDSh7',
   docsUrl: 'api/v2/repos/mijixunzong/kb/docs/',
-  baseURL: 'http://localhost:3000',
+  baseURL: 
+  'http://120.79.115.240:5000'
+  // 'http://localhost:5000',
 }
