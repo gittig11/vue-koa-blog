@@ -15,6 +15,12 @@ const routes = [
     redirect: '/home',
   },
   {
+    path: "/loginpage",
+    name: "LoginPage",
+    component: () =>
+      import("@/views/LoginPage.vue")
+  },
+  {
     path: "/articles/:id",
     name: "Articles",
     component: () =>
@@ -93,7 +99,7 @@ router.beforeEach((to, from, next) => {
     else {  // 没有token时
       // store.dispatch('logOut')
       next({
-        path: '/login',
+        path: '/loginpage',
         query: { redirect: to.fullPath }
       })
     }

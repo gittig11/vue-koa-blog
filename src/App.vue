@@ -1,21 +1,23 @@
 <template>
   <div id="app">
-    <Header />
+    <!-- <Header /> -->
+    <!-- <LoginPage /> -->
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Header from "./components/Header.vue";
+// import Header from "./components/Header.vue";
+// import LoginPage from "./views/LoginPage.vue";
 
 export default {
   name: "app",
   components: {
-    Header
+    // Header,
+    // LoginPage
   },
   data(){
     return {
-      isLogout: true
     }
   },
 };

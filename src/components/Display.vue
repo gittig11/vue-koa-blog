@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="container">
     <p>读取数据库：</p>
     <div v-for="item in list" :key="item.id">
       <p class="title">{{item.title}}</p>
@@ -9,34 +9,34 @@
 </template>
 
 <script>
-import axios from '@/axios.js'
-// this.axios是原生axios，而axios是封装后的
+  import axios from '@/axios.js'
+  // this.axios是原生axios，而axios是封装后的
 
-export default {
-  name: 'Display',
-  data () {
-    return {
-      list: []
-    }
-  },
-  mounted(){
-    axios.getArticles()
-    // this.axios.get('http://localhost:3000/articles')
-      .then((response)=>{
-        console.log(response.data);
-        this.$message({
-          showClose: true,
-          message: `读取MongoDB数据库成功~`,
-          type: 'success',
-          duration: 1000
+  export default {
+    name: 'Display',
+    data () {
+      return {
+        list: []
+      }
+    },
+    mounted(){
+      axios.getArticles()
+      // this.axios.get('http://localhost:3000/articles')
+        .then((response)=>{
+          console.log(response.data);
+          this.$message({
+            showClose: true,
+            message: `读取MongoDB数据库成功~`,
+            type: 'success',
+            duration: 1000
+          })
+          this.list = response.data
+          // console.log(response.data)
         })
-        this.list = response.data
-        // console.log(response.data)
-      })
-      .catch(()=>{
-      })
+        .catch(()=>{
+        })
+    }
   }
-}
 </script>
 
 <style lang="scss" scoped>

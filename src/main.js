@@ -11,6 +11,8 @@ Vue.use(VueAxios, axios);
 // axios.defaults.baseURL = 'https://api.example.com';
 // 全局的 axios 默认值
 
+import '@/assets/FZCuHeiSong.scss';
+
 Vue.config.productionTip = false;
 
 new Vue({

@@ -1,5 +1,6 @@
 <template>
-  <div class="home">
+  <div class="container">
+    <!-- <Header /> -->
     <el-row>
       <el-button type="primary" round @click="handleClick">同步文章</el-button>
       <el-button type="primary" round @click="doPersistence">文章持久化</el-button>
@@ -25,12 +26,14 @@
 <script>
   import configObj from '@/config.js'
   import axios from '@/axios.js'
-  
+  // import Header from "@/components/Header.vue";
+
   export default {
     name: "Home",
     components: {
       // HelloWorld,
-    } ,
+      // Header
+    },
     data() {
       return {
         blogs: [],
@@ -184,6 +187,17 @@
 </script>
 
 <style lang="scss">
+  body{
+    margin: 0;
+  }
+  .container{
+    padding: 10px;
+    .el-button--primary{
+      background-color: #4E82F9;
+      border: 0;
+      width: 116px;
+    }
+  }
   .el-checkbox__label {
   }
   .el-checkbox {
