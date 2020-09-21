@@ -176,7 +176,7 @@
       .right{
         float: left;
         .title{
-          font-size: 36px;
+          font-size: 26px;
           color: #4D81F9;
           margin: 40px 40px 20px;
         }
