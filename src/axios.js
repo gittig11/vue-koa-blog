@@ -58,7 +58,7 @@ export default {
     return instance.get('/articles'); 
   },
   postAnArticle(data){
-    return instance.post('/articles', data); 
+    return instance.post('/articles/new', data); 
   },
   removeAnArticle(articleId){
     return instance.delete('/articles/'+articleId); 
